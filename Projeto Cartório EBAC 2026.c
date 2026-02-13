@@ -63,29 +63,54 @@ int consultar()
 {
 	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
 	
-	char cpf[40];
-	char conteudo[200];
+	int opcao_consulta; //Variável para controlar o menu interno
 	
-	printf("\n\!! CONSULTA DE USUÁRIO !! \n\n\n\n");
-	printf("Digite o CPF a ser consultado: ");
-	scanf("%s",cpf);
+	do {
 	
-	FILE *file;
-	file = fopen(cpf,"r");
+		system("cls"); //Limpa a tela a cada nova consulta
+		char cpf[40];
+		char conteudo[200];
 	
-	if(file == NULL)
-	{
-		printf("\nCPF não localizado!\n\n\n");
+		printf("\n!! CONSULTA DE USUÁRIO !! \n\n\n\n");
+		printf("Digite o CPF a ser consultado: ");
+		scanf("%s",cpf);
+	
+		FILE *file;
+		file = fopen(cpf,"r");
+	
+		if(file == NULL)
+		{
+			printf("\nCPF não localizado!\n\n\n");
+		}
+		else
+		{
+			printf("\nInformações do USUÁRIO: \n\n\nCPF: ");
+			while(fgets(conteudo, 200, file) != NULL)
+			{
+			
+				printf("%s", conteudo);
+			}
+			printf("\n\n");
+			fclose(file); //Fechando o arquivo
+		}
+	
+		//Menu de decisão após a consulta
+		printf("\n\nDeseja:\n");
+		printf("\t1 - Consultar outro usuário\n");
+		printf("\t2 - Voltar ao menu principal\n");
+		printf("\t3 - Encerrar o programa\n");
+		printf("\nEscolha uma opção: ");
+		scanf("%d", &opcao_consulta);
+	
+		if (opcao_consulta == 3)
+		{ 
+			printf("\n\nEncerrando o sistema... Até logo!\n\n");
+			exit(0); //Finaliza o programa completamente
+		}
 	}
 	
-	while(fgets(conteudo, 200, file) != NULL)
-	{
-		printf("\nInformações do USUÁRIO: \n\n\nCPF: ");
-		printf("%s", conteudo);
-		printf("\n\n");
-	}
-	
-	system("pause");
+	while (opcao_consulta == 1); //Se for 2, o laço quebra e volta para a main
+	return 0;
 }
 
 int deletar()
