@@ -63,6 +63,7 @@ int registrar()
 		printf("\n\nUsuário registrado com sucesso!\n\n");
 		
 		//Menu de decisão
+		system("cls");
 		printf("\n\nDeseja:\n");
 		printf("\t1 - Registrar outro usuário\n");
 		printf("\t2 - Voltar ao menu principal\n");
@@ -73,7 +74,7 @@ int registrar()
 		if (opcao_interna == 3)
 		exit(0);
 		
-		} 
+	} 
 		
 	while (opcao_interna == 1);
 	return 0;
@@ -95,7 +96,7 @@ int consultar()
 		char conteudo[200];
 	
 		printf("\n!! CONSULTA DE USUÁRIO !! \n\n\n\n");
-		printf("Digite o CPF a ser consultado: ");
+		printf("Digite o CPF a ser consultado: "); //recebendo qual usuário vai ser consultado
 		scanf("%s",cpf);
 	
 		FILE *file;
@@ -118,6 +119,7 @@ int consultar()
 		}
 	
 		//Menu de decisão após a consulta
+		system("cls");
 		printf("\n\nDeseja:\n");
 		printf("\t1 - Consultar outro usuário\n");
 		printf("\t2 - Voltar ao menu principal\n");
@@ -163,6 +165,7 @@ int deletar()
 			printf("\n\nErro: Usuário não encontrado ou não foi possível deletar.\nVerifique o CPF.\n\n");
 		}
 
+		system("cls");
 		printf("\n\nDeseja:\n\n");
 		printf("\t1 - Deletar outro usuário\n");
 		printf("\t2 - Voltar ao menu\n");
@@ -201,7 +204,6 @@ int main ()
 		{
 		
 			system("cls");
-	
 			setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
 		
 			printf ("\n ### Cartório da EBAC ###\n\n"); //Início o menu
